@@ -39,8 +39,23 @@ Source code needed:
 -------------------
 Only LinqToExcelAdapter.cs file is needed to make it work like LinqToExcel.
 
+Version history:
+---------------
+* Version 1.0      : http://ti1ca.com/8ci1u2xm-ExcelDataReaderLinqToExcelAdapter-ExcelDataReaderLinqToExcelAdapter.zip.html
+* Version 1.1 (v2) : http://ti1ca.com/b8v7pika-ExcelDataReaderLinqToExcelAdapter-v-2-ExcelDataReaderLinqToExcelAdapter_v_2.zip.html
+    * Add Function : Worksheet
+    * Throw exception if Worksheet not found.
+* Version 1.2 (v3) : https://ti1ca.com/6b4wsagf-ExcelDataReaderLinqToExcelAdapter-v-3-ExcelDataReaderLinqToExcelAdapter_v_3.zip.html
+    * Allow to open the excel file even it is already opened into Excel.
+    * Add LinqToExcelAdapter.ExcelQueryFactory.GetWorksheetNames() function that return all Worksheet names.
+    * Allow to auto-detect the header if not into the first row ('IsAutoDetectFirstRowForMapping' parameter into the LinqToExcelAdapter.ExcelQueryFactory function).
+    * Allow to force column to be mapped into LinqToExcelAdapter.ExcelQueryFactory.AddMapping ('IsMandatory' parameter, all rows are ignored while this column is not found, can work with IsAutoDetectFirstRowForMapping parameter (or not)).
+* Version 2.0 : 
+   * Same as Version 1.2 but work for ExcelDataReader 3.4.0
+
 Simple sample:
 ---------------
+```
 class Person
 {
     public enum eSexe
@@ -81,3 +96,4 @@ catch(Exception _ex)
 {
     MessageBox.Show(String.Format("Error: {0}", _ex.Message), "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
 }
+```
