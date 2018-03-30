@@ -55,7 +55,7 @@ Version history:
 
 Simple sample:
 ---------------
-```
+```c#
 class Person
 {
     public enum eSexe
