@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
@@ -27,13 +27,16 @@ namespace ExcelDataReader
     /// 
     /// Idea ? Rewrite all code that use LinqToExcel in my software or used another excel reader and make an adapter to work exactly like LinqToExcel.
     /// It is this second option that I have tried to make.
-    /// Of course, for the moment, all LinqToExcel interface is not implemented but 3 functions :
+    /// Of course, for the moment, all LinqToExcel interface is not implemented.
+    /// Avalaible:
     /// - WorksheetRangeNoHeader
     /// - WorksheetRange
     /// - GetColumnNames
+    /// - GetWorksheetNames
     ///
     /// You can use Linq to query into excel, make mapping to automatically fill class on each row.
-    /// Mapping with column's name is not always the first row, it can be anywhere.
+    /// Mapping with column's name is not always the first row, it can be anywhere and can be found automatically if needed.
+    /// You can add mandatories columns header to force it to find at least some colums.
     /// 
     /// Probably it is a good start to make your library more efficient and simple to use.
     /// 
