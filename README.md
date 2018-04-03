@@ -52,6 +52,9 @@ Version history:
     * Allow to force column to be mapped into LinqToExcelAdapter.ExcelQueryFactory.AddMapping ('IsMandatory' parameter, all rows are ignored while this column is not found, can work with IsAutoDetectFirstRowForMapping parameter (or not)).
 * Version 2.0 : 
    * Same as Version 1.2 but work for ExcelDataReader 3.4.0
+* Version 2.1 (futur release) : 
+   * Add function ClearMapping() that allow to clear all the excel mapping.
+
 
 Simple sample:
 ---------------
