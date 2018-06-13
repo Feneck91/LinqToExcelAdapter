@@ -266,6 +266,36 @@ namespace ExcelDataReader
             }
 
             /// <summary>
+            /// Add mapping into the list of mapping items.
+            /// </summary>
+            /// <typeparam name="T">Type of class to map.</typeparam>
+            /// <param name="_mapping">Mapping function to map property's class to excel's column data.</param>
+            /// <param name="_strColumnName">Excel column's name where data is read.</param>
+            /// <param name="_funcConvertValue">Function to convert value if needed (if not directly convert from string to the target field type automatically).</param>
+            /// <param name="_bIsMandatory">If the mandatory is true, the binding will not work if this column is not found. false to work like LinqToExcel.</param>
+            public void AddMapping<T>(string _mapping, string _strColumnName, Func<string, object> _funcConvertValue = null, bool _bIsMandatory = false)
+            {
+                ListMapping.Add(new Mapping<T>(GetLambda<T>(_mapping), _strColumnName, _funcConvertValue, _bIsMandatory));
+            }
+
+            /// <summary>
+            /// Generate Expression for property of given type T
+            /// </summary>
+            private Expression<Func<T, object>> GetLambda<T>(string property)
+            {
+                var param = Expression.Parameter(typeof(T), "p");
+
+                Expression parent = Expression.Property(param, property);
+
+                if (!parent.Type.IsValueType)
+                {
+                    return Expression.Lambda<Func<T, object>>(parent, param);
+                }
+                var convert = Expression.Convert(parent, typeof(object));
+                return Expression.Lambda<Func<T, object>>(convert, param);
+            }
+			
+            /// <summary>
             /// Clear all the mapping.
             /// </summary>
             public void ClearMapping()
